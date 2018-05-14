@@ -25,9 +25,18 @@ function shuffle(array) {
     return array;
 }
 
+//Setting up variables
 
 // list of cards
-let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"]
+let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+
+//Stars
+let stars = document.querySelector('.stars');
+
+//Star score
+let starScore = document.getElementsByClassName('fa-star');
+
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
