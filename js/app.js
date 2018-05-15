@@ -10,6 +10,32 @@
  *   - add each card's HTML to the page
  */
 
+ //Setting up variables
+
+ //<ul> of cards Selector
+ let deck = document.getElementsByClassName('deck');
+
+ // list of cards
+ let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+
+ // Card variable
+ let cards = document.getElementsByClassName('card');
+
+ //<ul> of Stars
+ let stars = document.querySelector('.stars');
+
+ //Individual star selector
+ let starScore = document.getElementsByClassName('fa-star');
+
+ //time
+ let time = 0;
+
+ //moves
+ let moves = document.getElementsByClassName('moves');
+
+ //Restart button
+ let restart = document.getElementsByClassName('restart');
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -25,32 +51,10 @@ function shuffle(array) {
     return array;
 }
 
-//Setting up variables
-
-//<ul> of cards Selector
-let deck = document.getElementsByClassName('deck');
-
-// list of cards
-let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
-
-// Card variable
-let cards = document.getElementsByClassName('card');
-
-//<ul> of Stars
-let stars = document.querySelector('.stars');
-
-//Individual star selector
-let starScore = document.getElementsByClassName('fa-star');
-
-//time
-let time = 0;
-
-//moves
-let moves = document.getElementsByClassName('moves');
-
-//Restart button
-let restart = document.getElementsByClassName('restart');
-
+//start of game function
+function startGame() {
+  shuffle(cardList);
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
