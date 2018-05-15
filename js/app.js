@@ -30,11 +30,17 @@ function shuffle(array) {
 // list of cards
 let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
 
+// Card variable
+let cards = document.getElementsByClassName('card');
+
 //Stars
 let stars = document.querySelector('.stars');
 
 //Star score
 let starScore = document.getElementsByClassName('fa-star');
+
+//time
+let time = 0;
 
 
 
