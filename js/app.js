@@ -27,21 +27,29 @@ function shuffle(array) {
 
 //Setting up variables
 
+//<ul> of cards Selector
+let deck = document.getElementsByClassName('deck');
+
 // list of cards
 let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
 
 // Card variable
 let cards = document.getElementsByClassName('card');
 
-//Stars
+//<ul> of Stars
 let stars = document.querySelector('.stars');
 
-//Star score
+//Individual star selector
 let starScore = document.getElementsByClassName('fa-star');
 
 //time
 let time = 0;
 
+//moves
+let moves = document.getElementsByClassName('moves');
+
+//Restart button
+let restart = document.getElementsByClassName('restart');
 
 
 /*
