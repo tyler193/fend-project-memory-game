@@ -51,9 +51,14 @@ function shuffle(array) {
     return array;
 }
 
-//start of game function
+//start of game
+document.body.onLoad = startGame();
+
 function startGame() {
   shuffle(cardList);
+  for (let i = 0; i < cards.length; i++) {
+    cards[i].classList.remove('open', 'show', 'match');
+  }
 }
 
 /*
