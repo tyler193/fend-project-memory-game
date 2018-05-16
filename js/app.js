@@ -66,6 +66,7 @@ function flipCards() {
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', function() {
       cards[i].classList.toggle('open');
+      cards[i].classList.toggle('show');
     })
   }
 }
