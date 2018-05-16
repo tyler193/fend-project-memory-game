@@ -55,11 +55,14 @@ function shuffle(array) {
 document.body.onLoad = startGame();
 
 function startGame() {
-  shuffle(cardList);
+  shuffle(cardsList);
   for (let i = 0; i < cards.length; i++) {
     cards[i].classList.remove('open', 'show', 'match');
   }
 }
+
+//Flip cards
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
