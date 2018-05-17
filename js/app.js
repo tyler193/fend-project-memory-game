@@ -16,7 +16,8 @@
  let deck = document.getElementsByClassName('deck');
 
  // list of cards
- let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+ let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb",
+                 "fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
 
  // Card variable
  let cards = document.getElementsByClassName('card');
@@ -55,7 +56,7 @@ function shuffle(array) {
 document.body.onLoad = startGame();
 
 function startGame() {
-  shuffle(cards);
+  cards = shuffle(cards);
   for (let i = 0; i < cards.length; i++) {
     cards[i].classList.remove('open', 'show', 'match');
   }
@@ -71,6 +72,11 @@ function flipCards() {
   }
 }
 flipCards();
+
+//matched cards
+let match = document.getElementsByClassName('match');
+let openCards = [];
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
