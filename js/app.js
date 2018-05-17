@@ -17,7 +17,7 @@
 
  // list of cards
  let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb",
-                 "fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+                  "fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
 
  // Card variable
  let cards = document.getElementsByClassName('card');
@@ -36,6 +36,9 @@
 
  //Restart button
  let restart = document.getElementsByClassName('restart');
+
+ //Open cards array
+let openCards = [];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -56,7 +59,7 @@ function shuffle(array) {
 document.body.onLoad = startGame();
 
 function startGame() {
-  cards = shuffle(cards);
+  shuffle(cardList);
   for (let i = 0; i < cards.length; i++) {
     cards[i].classList.remove('open', 'show', 'match');
   }
@@ -68,6 +71,7 @@ function flipCards() {
     cards[i].addEventListener('click', function() {
       cards[i].classList.toggle('open');
       cards[i].classList.toggle('show');
+      openCards.push(cards[i]);
     })
   }
 }
@@ -75,7 +79,20 @@ flipCards();
 
 //matched cards
 let match = document.getElementsByClassName('match');
-let openCards = [];
+
+
+function matching () {
+  openCards.push(this);
+  let size = openCards.length;
+  if (size === 2) {
+    if (openCards[0] === openCards[1]) {
+      openCards[0].classList.add('match');
+      openCards[1].classList.add('match');
+      openCards[0].classList.remove('open', 'show');
+      openCards[1].classList.remove('open', 'show');
+    }
+  }
+}
 
 
 /*
