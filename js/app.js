@@ -13,7 +13,7 @@
  //Setting up variables
 
  //<ul> of cards Selector
- let deck = document.getElementsByClassName('deck');
+ let deck = document.querySelector('.deck');
 
  // list of cards
  let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb",
@@ -57,13 +57,24 @@ function shuffle(array) {
 
 //start of game
 document.body.onLoad = startGame();
+document.body.onLoad = faceShuffle();
 
 function startGame() {
-  shuffle(cardList);
   for (let i = 0; i < cards.length; i++) {
     cards[i].classList.remove('open', 'show', 'match');
   }
 }
+
+//shuffle card displays
+function faceShuffle() {
+  shuffle(cards);
+  let cardFace = '';
+  for (let i = 0; i < cards.length; i++) {
+    cardFace = cards[i];
+    deck.appendChild(cardFace);
+  }
+}
+//faceShuffle();
 
 //Flip cards
 function flipCards() {
@@ -82,9 +93,7 @@ let match = document.getElementsByClassName('match');
 
 
 function matching () {
-  openCards.push(this);
-  let size = openCards.length;
-  if (size === 2) {
+  if (openCards.length === 2) {
     if (openCards[0] === openCards[1]) {
       openCards[0].classList.add('match');
       openCards[1].classList.add('match');
@@ -93,7 +102,19 @@ function matching () {
     }
   }
 }
+matching();
 
+//shuffle card displays
+/*function faceShuffle() {
+  shuffle(cardList);
+  let cardFace = '';
+  for (let i = 0; i < cardList.length; i++) {
+    cardFace = cardList[i];
+    deck.appendChild(cardFace);
+  }
+}
+faceShuffle();
+*/
 
 /*
  * set up the event listener for a card. If a card is clicked:
