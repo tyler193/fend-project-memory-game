@@ -16,8 +16,8 @@
  let deck = document.querySelector('.deck');
 
  // list of cards
- let cardList = ["fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb",
-                  "fa-diamond", "fa-paper-plane-o", "fa-anchor", "fa-bolt", "fa-cube", "fa-leaf", "fa-bicycle", "fa-bomb"];
+ let cardList = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", " fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb",
+                  "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb"];
 
  // Card variable
  let cards = document.getElementsByClassName('card');
@@ -67,17 +67,21 @@ function startGame() {
 
 //shuffle card displays
 function faceShuffle() {
-  shuffle(cards);
-  let cardFace = '';
-  for (let i = 0; i < cards.length; i++) {
-    cardFace = cards[i];
-    deck.appendChild(cardFace);
+  shuffle(cardList);
+  deck.innerHTML = '';
+  for (let i = 0; i < cardList.length; i++) {
+    let newLi = document.createElement('li');
+    newLi.className = "card";
+    let newI = document.createElement('i');
+    newI.className = cardList[i];
+    let addNewI = newLi.appendChild(newI);
+    let addNewLi = deck.appendChild(newLi);
   }
 }
-//faceShuffle();
+
 
 //Flip cards
-function flipCards() {
+function flipCards(event) {
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', function() {
       cards[i].classList.toggle('open');
@@ -90,13 +94,18 @@ flipCards();
 
 //matched cards
 let match = document.getElementsByClassName('match');
-
+let matchedCards = [];
 
 function matching () {
   if (openCards.length === 2) {
-    if (openCards[0] === openCards[1]) {
+    if (openCards[0].type === openCards[1].type) {
       openCards[0].classList.add('match');
       openCards[1].classList.add('match');
+      matchedCards.push(openCards[0]);
+      matchedCards.push(openCards[1]);
+      //openCards[0].classList.remove('open', 'show');
+      //openCards[1].classList.remove('open', 'show');
+    } else {
       openCards[0].classList.remove('open', 'show');
       openCards[1].classList.remove('open', 'show');
     }
