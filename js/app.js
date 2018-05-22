@@ -70,12 +70,12 @@ function faceShuffle() {
   shuffle(cardList);
   deck.innerHTML = '';
   for (let i = 0; i < cardList.length; i++) {
-    let newLi = document.createElement('li');
-    newLi.className = "card";
-    let newI = document.createElement('i');
-    newI.className = cardList[i];
-    let addNewI = newLi.appendChild(newI);
-    let addNewLi = deck.appendChild(newLi);
+    let newLiElem = document.createElement('li');
+    newLiElem.className = 'card';
+    let newIElem = document.createElement('i');
+    newIElem.className = cardList[i];
+    let addNewI = newLiElem.appendChild(newIElem);
+    let addNewLi = deck.appendChild(newLiElem);
   }
 }
 
