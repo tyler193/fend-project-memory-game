@@ -16,7 +16,7 @@
  let deck = document.querySelector('.deck');
 
  // list of cards
- let cardList = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", " fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb",
+ let cardList = ["fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb",
                   "fa fa-diamond", "fa fa-paper-plane-o", "fa fa-anchor", "fa fa-bolt", "fa fa-cube", "fa fa-leaf", "fa fa-bicycle", "fa fa-bomb"];
 
  // Card variable
@@ -121,20 +121,7 @@ function matching () {
       matchedCards.push(openCards[1]);
 
 }
-//matching();
 
-/*
-//shuffle card displays
-function faceShuffle() {
-  shuffle(cards);
-  let cardFace = '';
-  for (let i = 0; i < cards.length; i++) {
-    cardFace = cards[i];
-    deck.appendChild(cardFace);
-  }
-}
-faceShuffle();
-*/
 
 /*
  * set up the event listener for a card. If a card is clicked:
