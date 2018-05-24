@@ -74,19 +74,29 @@ function faceShuffle() {
     newLiElem.className = 'card';
     let newIElem = document.createElement('i');
     newIElem.className = cardList[i];
-    let addNewI = newLiElem.appendChild(newIElem);
-    let addNewLi = deck.appendChild(newLiElem);
+    newLiElem.appendChild(newIElem);
+    deck.appendChild(newLiElem);
   }
 }
 
 
 //Flip cards
-function flipCards(event) {
+function flipCards() {
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', function() {
       cards[i].classList.toggle('open');
       cards[i].classList.toggle('show');
       openCards.push(cards[i]);
+      if (openCards.length === 2) {
+        setTimeout(function() {
+          for (let j = 0; j < openCards.length; j++) {
+            openCards[j].classList.remove('open', 'show');
+          }
+
+          openCards = [];
+        }, 1000)
+      } else {
+      }
     })
   }
 }
@@ -97,7 +107,7 @@ let match = document.getElementsByClassName('match');
 let matchedCards = [];
 
 function matching () {
-  if (openCards.length === 2) {
+  //if (openCards.length === 2) {
     if (openCards[0].type === openCards[1].type) {
       openCards[0].classList.add('match');
       openCards[1].classList.add('match');
@@ -110,15 +120,16 @@ function matching () {
       openCards[1].classList.remove('open', 'show');
     }
   }
-}
-matching();
+//}
+//matching();
 
+/*
 //shuffle card displays
-/*function faceShuffle() {
-  shuffle(cardList);
+function faceShuffle() {
+  shuffle(cards);
   let cardFace = '';
-  for (let i = 0; i < cardList.length; i++) {
-    cardFace = cardList[i];
+  for (let i = 0; i < cards.length; i++) {
+    cardFace = cards[i];
     deck.appendChild(cardFace);
   }
 }
