@@ -87,7 +87,16 @@ function flipCards() {
       cards[i].classList.toggle('open');
       cards[i].classList.toggle('show');
       openCards.push(cards[i]);
+
+
       if (openCards.length === 2) {
+        //if cards match
+        if (openCards[0].innerHTML === openCards[1].innerHTML) {
+          console.log("matching");
+          matching();
+        }
+
+        //If cards don't match
         setTimeout(function() {
           for (let j = 0; j < openCards.length; j++) {
             openCards[j].classList.remove('open', 'show');
@@ -95,7 +104,6 @@ function flipCards() {
 
           openCards = [];
         }, 1000)
-      } else {
       }
     })
   }
@@ -107,20 +115,12 @@ let match = document.getElementsByClassName('match');
 let matchedCards = [];
 
 function matching () {
-  //if (openCards.length === 2) {
-    if (openCards[0].type === openCards[1].type) {
       openCards[0].classList.add('match');
       openCards[1].classList.add('match');
       matchedCards.push(openCards[0]);
       matchedCards.push(openCards[1]);
-      //openCards[0].classList.remove('open', 'show');
-      //openCards[1].classList.remove('open', 'show');
-    } else {
-      openCards[0].classList.remove('open', 'show');
-      openCards[1].classList.remove('open', 'show');
-    }
-  }
-//}
+
+}
 //matching();
 
 /*
