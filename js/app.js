@@ -29,10 +29,11 @@
  let starScore = document.getElementsByClassName('fa-star');
 
  //time
- let time = 0;
+ let timer = document.getElementById('timer');
 
  //moves
- let moves = document.getElementsByClassName('moves');
+ let moves = document.querySelector('.moves').innerHTML;
+ let movesCounter = 0;
 
  //Restart button
  let restart = document.getElementsByClassName('restart');
@@ -87,8 +88,15 @@ function flipCards() {
       cards[i].classList.toggle('open');
       cards[i].classList.toggle('show');
       openCards.push(cards[i]);
+      moveCounter();
 
 
+      //start timer with moves
+      if (openCards.length === 1) {
+        startTime();
+      }
+
+      //borrowed some advice from Mike's webinar :)
       if (openCards.length === 2) {
         //if cards match
         if (openCards[0].innerHTML === openCards[1].innerHTML) {
@@ -103,7 +111,7 @@ function flipCards() {
           }
 
           openCards = [];
-        }, 1000)
+        }, 700)
       }
     })
   }
@@ -119,9 +127,43 @@ function matching () {
       openCards[1].classList.add('match');
       matchedCards.push(openCards[0]);
       matchedCards.push(openCards[1]);
+      if (matchedCards === 16) {
+        modal();
+      }
+}
+
+//modal
+function modal() {
 
 }
 
+//timer
+let minutes = 0;
+let seconds = 0;
+let time = '';
+function startTime() {
+  time = setInterval(function() {
+    seconds++;
+    if (seconds === 60) {
+      seconds = 0;
+      minutes++;
+    }
+    timer.innerHTML = minutes + ':' + seconds;
+  }, 1000)
+}
+
+function score() {
+
+}
+
+function resetButton() {
+
+}
+
+function moveCounter() {
+  movesCounter ++;
+  document.querySelector('.moves').innerHTML = movesCounter;
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
