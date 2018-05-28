@@ -128,15 +128,32 @@ function matching () {
       openCards[1].classList.add('match');
       matchedCards.push(openCards[0]);
       matchedCards.push(openCards[1]);
-      if (matchedCards === 16) {
+      if (matchedCards.length === 16) {
         modal();
       }
 }
 
-//modal
+//modal popup
+let modalPop = document.querySelector('.modal');
+let modalScore = document.getElementById('score');
+let modalStars = document.getElementById('stars');
+let modalTime = document.getElementById('time');
 function modal() {
+    modalPop.style.display = 'block';
+    modalScore.innerHTML = 'Total moves: ' + movesCounter;
 
+    if (movesCounter < 20) {
+    modalStars.innerHTML = 'Star Score: 3';
+  } else if (movesCounter >= 20 && movesCounter < 30) {
+    modalStars.innerHTML = 'Star Score: 2';
+  } else {
+    modalStars.innerHTML = 'Star Score: 1';
+  }
+
+  clearInterval(time);
+  modalTime.innerHTML = 'Time: ' + timer.innerHTML;
 }
+
 
 //timer
 let minutes = 0;
@@ -155,25 +172,38 @@ function startTime() {
 
 //change star score based on moves
 function scoreStar() {
-  if (movesCounter === 15) {
+  if (movesCounter === 20) {
     //hide a star
     starScore[0].style.display = "none";
   }
-  if (movesCounter === 22) {
+  if (movesCounter === 30) {
     //hide 2 stars
     starScore[1].style.display = "none";
   }
 }
 
-//restart game
+//restart game button
 restart.addEventListener('click', function() {
   window.location.reload(true);
 })
 
+//counts moves as user clicks cards
 function moveCounter() {
   movesCounter ++;
   document.querySelector('.moves').innerHTML = movesCounter;
 }
+
+//play again modal button
+let playButton = document.querySelector('.play-again');
+playButton.onclick = function() {
+  window.location.reload(true);
+}
+
+//[X] makes modal close
+let closeButton = document.querySelector('.close');
+closeButton.addEventListener('click', function() {
+  modalPop.style.display = 'none';
+})
 
 /*
  * set up the event listener for a card. If a card is clicked:
