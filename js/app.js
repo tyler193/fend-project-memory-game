@@ -36,7 +36,7 @@
  let movesCounter = 0;
 
  //Restart button
- let restart = document.getElementsByClassName('restart');
+ let restart = document.querySelector('.fa-repeat');
 
  //Open cards array
 let openCards = [];
@@ -89,10 +89,11 @@ function flipCards() {
       cards[i].classList.toggle('show');
       openCards.push(cards[i]);
       moveCounter();
+      scoreStar();
 
 
       //start timer with moves
-      if (openCards.length === 1) {
+      if (movesCounter === 1) {
         startTime();
       }
 
@@ -152,13 +153,22 @@ function startTime() {
   }, 1000)
 }
 
-function score() {
-
+//change star score based on moves
+function scoreStar() {
+  if (movesCounter === 15) {
+    //hide a star
+    starScore[0].style.display = "none";
+  }
+  if (movesCounter === 22) {
+    //hide 2 stars
+    starScore[1].style.display = "none";
+  }
 }
 
-function resetButton() {
-
-}
+//restart game
+restart.addEventListener('click', function() {
+  window.location.reload(true);
+})
 
 function moveCounter() {
   movesCounter ++;
