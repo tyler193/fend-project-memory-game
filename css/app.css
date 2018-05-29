@@ -136,3 +136,19 @@ h1 {
  .modal-text {
    text-align: center;
  }
+
+ /*
+  * Styles for responsiveness
+  */
+
+@media only screen and (max-width: 660px) {
+  body .deck {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  header, .score-panel {
+    width: 100%;
+  }
+}

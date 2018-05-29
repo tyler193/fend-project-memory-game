@@ -113,7 +113,7 @@ function flipCards() {
           }
 
           openCards = [];
-        }, 700)
+        }, 600)
       }
     })
   }
