@@ -85,8 +85,9 @@ function faceShuffle() {
 function flipCards() {
   for (let i = 0; i < cards.length; i++) {
     cards[i].addEventListener('click', function() {
-      cards[i].classList.toggle('open');
-      cards[i].classList.toggle('show');
+      cards[i].classList.add('open');
+      cards[i].classList.add('show');
+      cards[i].classList.add('stop-click');
       openCards.push(cards[i]);
       moveCounter();
       scoreStar();
@@ -108,7 +109,7 @@ function flipCards() {
         //If cards don't match
         setTimeout(function() {
           for (let j = 0; j < openCards.length; j++) {
-            openCards[j].classList.remove('open', 'show');
+            openCards[j].classList.remove('open', 'show', 'stop-click');
           }
 
           openCards = [];
@@ -133,7 +134,7 @@ function matching () {
       }
 }
 
-//modal popup
+//modal popup - with help from w3schools.com :)
 let modalPop = document.querySelector('.modal');
 let modalScore = document.getElementById('score');
 let modalStars = document.getElementById('stars');
